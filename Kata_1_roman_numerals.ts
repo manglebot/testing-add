@@ -40,6 +40,19 @@ export function romanNumerals(num:number):string {
           };
         //   this returns an array. need to turn into roman
 
+        splitNumberChunks.forEach(element => {
+            if(element of splitNumberChunks >){
+                // do something;
+            }
+        });
+
+        // I accidentally saw this answer on the web. it's so simple. ouch!
+        // for ( i in lookup ) {
+        //     while ( num >= lookup[i] ) {
+        //       roman += i;
+        //       num -= lookup[i];
+        //     }
+
         const output: string = "[100,20,3]";
 
     return output;
