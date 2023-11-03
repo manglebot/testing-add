@@ -8,6 +8,9 @@ test("Return XX", () => {
   expect(romanNumerals(20)).toEqual('X');
 });
 
+test("Return XX", () => {
+  expect(romanNumerals(66)).toEqual('LXVI');
+});
 
 // I = 1
 // V = 5
