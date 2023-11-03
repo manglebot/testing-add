@@ -87,7 +87,7 @@ export function romanNumerals(num:number):string {
         //       num -= lookup[i];
         //     }
 
-        const output: string = 'X';
+        // const output: string = 'X';
 
-    return output;
+    return roman;
 };

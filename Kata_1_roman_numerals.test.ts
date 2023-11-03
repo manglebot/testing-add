@@ -5,7 +5,7 @@ test("Return X", () => {
 });
 
 test("Return XX", () => {
-  expect(romanNumerals(20)).toEqual('X');
+  expect(romanNumerals(20)).toEqual('XX');
 });
 
 test("Return XX", () => {
