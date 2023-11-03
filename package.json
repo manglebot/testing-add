@@ -4,7 +4,7 @@
 	"description": "Kata roman numberals challenge",
 	"main": "index.js",
 	"scripts": {
-		"test": "jest"
+		"test": "jest kata_2_bowling.test"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.7",
