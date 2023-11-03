@@ -42,13 +42,14 @@ export function romanNumerals(num:number):string {
 
     let test = {mainNumerals}
         for ( let i in mainNumerals ) {
-            while ( num >= mainNumerals.value[i] ) {
+            console.log("mainNumerals[i] = "+mainNumerals[i]);
+            while ( num >= mainNumerals[i] ) {
               roman += i;
               num -= mainNumerals[i];
             }
         };
 
-            console.log(test);
+            // console.log(test);
 
     
     // split the number into 1's, 10's and 100's and 1000's

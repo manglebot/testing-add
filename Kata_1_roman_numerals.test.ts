@@ -4,6 +4,9 @@ test("Return X", () => {
   expect(romanNumerals(10)).toEqual('X');
 });
 
+test("Return XX", () => {
+  expect(romanNumerals(20)).toEqual('X');
+});
 
 
 // I = 1
