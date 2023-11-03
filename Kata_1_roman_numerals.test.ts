@@ -1,7 +1,7 @@
 import { romanNumerals } from "./Kata_1_roman_numerals";
 
-test("Return number 5", () => {
-  expect(romanNumerals(123)).toEqual("[100,20,3]");
+test("Return X", () => {
+  expect(romanNumerals(10)).toEqual('X');
 });
 
 
