@@ -1,9 +1,13 @@
 import { bowlingScore } from "./kata_2_bowling";
 
-test("Return 2 from two rolls of 1", () => {
-  expect(bowlingScore([1,1])).toBe(2);
+test("Return 33 from 3 rolls", () => {
+  expect(bowlingScore([[0,10],[10,0],[5,4]])).toBe(33);
 });
 
+// test("Return 6 from 3 rolls of 1", () => {
+//     expect(bowlingScore([2,1,3,1,4,1])).toBe(12);
+//   });
 
-
-
+//   test("Return 6 from 3 rolls of 1", () => {
+//     expect(bowlingScore([4,6,3,3])).toBe(19);
+//   });
