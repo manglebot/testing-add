@@ -1,5 +1,9 @@
 import { bowlingScore } from "./kata_2_bowling";
 
-test("Return 1 from 1", () => {
-  expect(bowlingScore(1)).toBe(1);
+test("Return 2 from two rolls of 1", () => {
+  expect(bowlingScore([1,1])).toBe(2);
 });
+
+
+
+
