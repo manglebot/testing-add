@@ -25,6 +25,7 @@ export function bowlingScore(scores:string[]):number {
     scores.forEach((score,index) => {
 
         const currentFrame = frames[currentFrameIndex];
+        // const nextFrame = frames[currentFrameIndex+1];
 
         if (Number(score) < 10){
 
@@ -32,16 +33,32 @@ export function bowlingScore(scores:string[]):number {
                 currentFrame.roll1 = Number(score);
             } else if (currentFrame.roll2 === null){
                 currentFrame.roll2 = Number(score);
+                // add the total of this frame to the score
                 currentFrame.score += currentFrame.roll1 + currentFrame.roll2;
                 // move onto the next frame;
                 currentFrameIndex++;
             }
-
-
             console.log(frames[index]);
             
         } else {
-                // deal with strikes and spares here "#" "/"
+            // deal with strikes and spares here "#" "/"
+            if(score === "/"){
+                // spare here
+                console.log("this is a spare");
+                currentFrame.roll2 = (10 - currentFrame.roll1);
+                // set score to zero, but fix it in the next roll??
+                currentFrame.score = 10;
+
+                if (index < scores.length -1){
+                    const nextFrame = scores[index + 1];
+                    currentFrame.score += Number(nextFrame);
+                }
+                
+                
+                // + Number(frames[currentFrameIndex+1].score);
+                console.log(frames[currentFrameIndex+1].score);
+                currentFrameIndex++;
+            }
             }
         });
 
