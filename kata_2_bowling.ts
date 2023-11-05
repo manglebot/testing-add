@@ -98,6 +98,5 @@ export function bowlingScore(scores:string[]):number {
     
     console.log(frames)
 
-
     return finalScore;
 };
