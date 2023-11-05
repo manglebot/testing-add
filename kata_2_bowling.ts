@@ -3,8 +3,8 @@ export function bowlingScore(scores:string[]):number {
     // create 10 empty frames and put score into them. if strike or slice, start with 0 and add later.
 
     // null as number creates a warning, but seems to work. Any hints welcome.
-    // I did see that { roll1:null as unknown as number ... but felt wrong.
     // I did try as unknown, but that created errors later - and I know that it's a number eventually.
+    // I did see that { roll1:null as unknown as number ... worked but felt wrong.
 
     const frames = [
         { roll1:null as number, roll2:null as number, score:0 },
@@ -26,7 +26,7 @@ export function bowlingScore(scores:string[]):number {
 
         const currentFrame = frames[currentFrameIndex];
 
-        // non strikes/spares here
+        // normal scores
         if (Number(score) < 10){
 
             if(currentFrame.roll1 === null){
@@ -40,8 +40,7 @@ export function bowlingScore(scores:string[]):number {
             }
             console.log(frames[index]);
             
-         // deal with strikes and spares below "#" "/"
-
+         // deal with spares then strikes below "/" "#"
         } else if(score === "/"){
                 // spare here
                 console.log(frames);
@@ -60,7 +59,7 @@ export function bowlingScore(scores:string[]):number {
         } else if (score === "#"){
             // strike here
 
-            // ISSUE - THE 1ST STRIKE OF MULTIPLE ISN'T CALCULATING PROPERLY!!
+            // ISSUE - THE 1ST STRIKE OF MULTIPLE STRIKES ISN'T CALCULATING PROPERLY!!
 
             // first strike add 10
             if (multipleStrikes === 0) {
