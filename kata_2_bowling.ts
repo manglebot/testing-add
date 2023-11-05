@@ -41,7 +41,7 @@ export function bowlingScore(scores:string[]):number {
             console.log(frames[index]);
             
         } else {
-            // deal with strikes and spares here "#" "/"
+            // deal with strikes and spares below "#" "/"
             if(score === "/"){
                 // spare here
                 console.log("this is a spare");
@@ -54,11 +54,30 @@ export function bowlingScore(scores:string[]):number {
                     currentFrame.score += Number(nextFrame);
                 }
                 
-                
-                // + Number(frames[currentFrameIndex+1].score);
+
                 console.log(frames[currentFrameIndex+1].score);
                 currentFrameIndex++;
             }
+
+            if(score === "#"){
+                // strike here
+                console.log("this is a spare");
+                currentFrame.roll2 = (10 - currentFrame.roll1);
+                // set score to zero, but fix it in the next roll??
+                currentFrame.score = 10;
+
+                if (index < scores.length -1){
+                    let nextFrame = Number(scores[index + 1]);
+                    nextFrame += Number(scores[index + 2]);
+                    
+                    currentFrame.score += Number(nextFrame);
+                }
+                
+
+                console.log(frames[currentFrameIndex+1].score);
+                currentFrameIndex++;
+            }
+
             }
         });
 
