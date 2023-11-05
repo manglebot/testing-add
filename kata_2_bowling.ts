@@ -3,6 +3,7 @@ export function bowlingScore(scores:string[]):number {
     // create 10 empty frames and put score into them. if strike or slice, start with 0 and add later.
 
     // null as number creates a warning, but seems to work. Any hints welcome.
+    // I did see that { roll1:null as unknown as number ... but felt wrong.
     // I did try as unknown, but that created errors later - and I know that it's a number eventually.
 
     const frames = [
