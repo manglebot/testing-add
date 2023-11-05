@@ -1,7 +1,5 @@
 export function bowlingScore(scores:string[]):number {
 
-    // input is currently ["1","2","3","4"]
-
     // create 10 empty frames and put score into them. if strike or slice, start with 0 and add later.
 
     // null as number creates a warning, but seems to work. Any hints welcome.
@@ -26,14 +24,44 @@ export function bowlingScore(scores:string[]):number {
     scores.forEach((score,index) => {
 
         const currentFrame = frames[currentFrameIndex];
-        // const nextFrame = frames[currentFrameIndex+1];
 
-        if(score === "#"){
+        // non strikes/spares here
+        if (Number(score) < 10){
+
+            if(currentFrame.roll1 === null){
+                currentFrame.roll1 = Number(score);
+            } else if (currentFrame.roll2 === null){
+                currentFrame.roll2 = Number(score);
+                // add the total of this frame to the score
+                currentFrame.score += currentFrame.roll1 + currentFrame.roll2;
+                // move onto the next frame;
+                currentFrameIndex++;
+            }
+            console.log(frames[index]);
+            
+         // deal with strikes and spares below "#" "/"
+
+        } else if(score === "/"){
+                // spare here
+                console.log(frames);
+                currentFrame.roll2 = (10 - currentFrame.roll1);
+                // set score to zero, but fix it in the next roll??
+                currentFrame.score = 10;
+
+                if (index < scores.length -1){
+                    const nextFrame = scores[index + 1];
+                    currentFrame.score += Number(nextFrame);
+                }
+
+                console.log(frames[currentFrameIndex+1].score);
+                currentFrameIndex++;
+                
+        } else if (score === "#"){
             // strike here
 
             // ISSUE - THE 1ST STRIKE OF MULTIPLE ISN'T CALCULATING PROPERLY!!
 
-            // strike 1 - add 10
+            // first strike add 10
             if (multipleStrikes === 0) {
                 currentFrame.roll1 = 10;
             }
@@ -61,41 +89,6 @@ export function bowlingScore(scores:string[]):number {
             multipleStrikes = 0;
             currentFrameIndex++;
         } 
-        
-        else
-
-        // non strikes here
-        if (Number(score) < 10){
-
-            if(currentFrame.roll1 === null){
-                currentFrame.roll1 = Number(score);
-            } else if (currentFrame.roll2 === null){
-                currentFrame.roll2 = Number(score);
-                // add the total of this frame to the score
-                currentFrame.score += currentFrame.roll1 + currentFrame.roll2;
-                // move onto the next frame;
-                currentFrameIndex++;
-            }
-            console.log(frames[index]);
-            
-        } else {
-            // deal with strikes and spares below "#" "/"
-            if(score === "/"){
-                // spare here
-                console.log(frames);
-                currentFrame.roll2 = (10 - currentFrame.roll1);
-                // set score to zero, but fix it in the next roll??
-                currentFrame.score = 10;
-
-                if (index < scores.length -1){
-                    const nextFrame = scores[index + 1];
-                    currentFrame.score += Number(nextFrame);
-                }
-
-                console.log(frames[currentFrameIndex+1].score);
-                currentFrameIndex++;
-            }
-        }
 
         });
 
