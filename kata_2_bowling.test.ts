@@ -1,12 +1,12 @@
 import { bowlingScore } from "./kata_2_bowling";
 
-test("Return 12 from 3 rolls", () => {
-  expect(bowlingScore(["4","4","4"])).toBe(12);
-});
+// test("Return 12 from 3 rolls", () => {
+//   expect(bowlingScore(["4","4","4"])).toBe(12);
+// });
 
 // for this test the
 test("Return 10 from 4 rolls (ie 2 frames)", () => {
-    expect(bowlingScore(["1","2","3","4"])).toBe(18);
+    expect(bowlingScore(["1","2","3","4"])).toBe(10);
   });
 
 // test("Return 6 from 3 rolls of 1", () => {

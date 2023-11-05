@@ -1,6 +1,6 @@
 export function bowlingScore(scores:string[]):number {
 
-    // input is currently ["4","4","4"]
+    // input is currently ["1","2","3","4"]
 
     // create 10 empty frames and put score into them. if strike or slice, start with 0 and add later.
 
@@ -20,21 +20,27 @@ export function bowlingScore(scores:string[]):number {
         { roll1:null as number, roll2:null as number, score:0 }
     ]
 
+    let currentFrameIndex = 0;
+
     scores.forEach((score,index) => {
 
-        const currentFrame = frames[index];
+        const currentFrame = frames[currentFrameIndex];
 
         if (Number(score) < 10){
 
             if(currentFrame.roll1 === null){
                 currentFrame.roll1 = Number(score);
-            }
-            if (currentFrame.roll1 !== null && currentFrame.roll2 === null){
+            } else if (currentFrame.roll2 === null){
                 currentFrame.roll2 = Number(score);
+                currentFrame.score += currentFrame.roll1 + currentFrame.roll2;
+                // move onto the next frame;
+                currentFrameIndex++;
             }
-            currentFrame.score += currentFrame.roll1 + currentFrame.roll2;
 
-            } else {
+
+            console.log(frames[index]);
+            
+        } else {
                 // deal with strikes and spares here "#" "/"
             }
         });
