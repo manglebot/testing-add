@@ -28,6 +28,43 @@ export function bowlingScore(scores:string[]):number {
         const currentFrame = frames[currentFrameIndex];
         // const nextFrame = frames[currentFrameIndex+1];
 
+        if(score === "#"){
+            // strike here
+
+            // ISSUE - THE 1ST STRIKE OF MULTIPLE ISN'T CALCULATING PROPERLY!!
+
+            // strike 1 - add 10
+            if (multipleStrikes === 0) {
+                currentFrame.roll1 = 10;
+            }
+
+            multipleStrikes ++;
+
+            if (multipleStrikes => 1) {
+                // Add 10 points for each new strike
+                currentFrame.score += multipleStrikes * 10;
+              }
+
+              if (multipleStrikes < 2) {
+                // Only process the first two consecutive strikes
+                if (index < scores.length - 1) {
+                  if (scores[index + 1] === "#") {
+                    multipleStrikes++;
+                  } else {
+                    currentFrame.score += Number(scores[index + 1]);
+                    if (index < scores.length - 2) {
+                      currentFrame.score += Number(scores[index + 2]);
+                    }
+                  }
+                }
+            };
+            multipleStrikes = 0;
+            currentFrameIndex++;
+        } 
+        
+        else
+
+        // non strikes here
         if (Number(score) < 10){
 
             if(currentFrame.roll1 === null){
@@ -58,44 +95,8 @@ export function bowlingScore(scores:string[]):number {
                 console.log(frames[currentFrameIndex+1].score);
                 currentFrameIndex++;
             }
+        }
 
-            if(score === "#"){
-                // strike here
-                // console.log("this is a strike");
-                
-                multipleStrikes ++;
-
-                currentFrame.roll1 = 10;
-                // currentFrame.roll2 = null as number;
-                currentFrame.score = 10;
-
-                if (multipleStrikes > 1) {
-                    // Add 10 points for each new strike
-                    currentFrame.score += (multipleStrikes - 1) * 10;
-                  }
-                  
-
-                // if (index < scores.length -1){
-                //     if( scores[index + 1] = "#"){
-                //         // add strike 2
-                //         console.log("scores[index + 1]: "+scores[index + 1]);
-                //         currentFrame.score += 10;
-                //     }
-                //     if( scores[index + 2] = "#"){
-                //         // add strike 3
-                //         currentFrame.score += 10;
-                //     }
-
-                    else {
-                        let nextFrame = Number(scores[index + 1]);
-                        nextFrame += Number(scores[index + 2]);
-                        
-                        currentFrame.score += Number(nextFrame);
-                    } 
-                }
-                //console.log(frames[currentFrameIndex+1].score);
-                currentFrameIndex++;
-            }
         });
 
     const finalScore = frames.reduce((total, frames) => {
