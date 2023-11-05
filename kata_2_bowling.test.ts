@@ -16,10 +16,14 @@ import { bowlingScore } from "./kata_2_bowling";
 //   });
 
 // add strike. oh my it worked on first try!!
-  test("Return 48 from 10 rolls (ie 6 frames)", () => {
-    expect(bowlingScore(["1","2","3","4","5","2","#","3","4","3","4"])).toBe(48);
-  });
+//   test("Return 48 from 10 rolls (ie 6 frames)", () => {
+//     expect(bowlingScore(["1","2","3","4","5","2","#","3","4","3","4"])).toBe(48);
+//   });
 
+//   multiple strikes
+  test("Return 48 from 10 rolls (ie 6 frames)", () => {
+    expect(bowlingScore(["1","2","#","#","3","2","#","3","4","3","4"])).toBe(58);
+  });
 
 
 // test("Return 6 from 3 rolls of 1", () => {

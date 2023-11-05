@@ -21,6 +21,7 @@ export function bowlingScore(scores:string[]):number {
     ]
 
     let currentFrameIndex = 0;
+    let multipleStrikes = 0;
 
     scores.forEach((score,index) => {
 
@@ -44,7 +45,7 @@ export function bowlingScore(scores:string[]):number {
             // deal with strikes and spares below "#" "/"
             if(score === "/"){
                 // spare here
-                console.log("this is a spare");
+                console.log(frames);
                 currentFrame.roll2 = (10 - currentFrame.roll1);
                 // set score to zero, but fix it in the next roll??
                 currentFrame.score = 10;
@@ -53,7 +54,6 @@ export function bowlingScore(scores:string[]):number {
                     const nextFrame = scores[index + 1];
                     currentFrame.score += Number(nextFrame);
                 }
-                
 
                 console.log(frames[currentFrameIndex+1].score);
                 currentFrameIndex++;
@@ -61,23 +61,40 @@ export function bowlingScore(scores:string[]):number {
 
             if(score === "#"){
                 // strike here
-                console.log("this is a spare");
-                currentFrame.roll2 = (10 - currentFrame.roll1);
-                // set score to zero, but fix it in the next roll??
+                // console.log("this is a strike");
+                
+                multipleStrikes ++;
+
+                currentFrame.roll1 = 10;
+                // currentFrame.roll2 = null as number;
                 currentFrame.score = 10;
 
-                if (index < scores.length -1){
-                    let nextFrame = Number(scores[index + 1]);
-                    nextFrame += Number(scores[index + 2]);
-                    
-                    currentFrame.score += Number(nextFrame);
+                if (multipleStrikes > 1) {
+                    // Add 10 points for each new strike
+                    currentFrame.score += (multipleStrikes - 1) * 10;
+                  }
+                  
+
+                // if (index < scores.length -1){
+                //     if( scores[index + 1] = "#"){
+                //         // add strike 2
+                //         console.log("scores[index + 1]: "+scores[index + 1]);
+                //         currentFrame.score += 10;
+                //     }
+                //     if( scores[index + 2] = "#"){
+                //         // add strike 3
+                //         currentFrame.score += 10;
+                //     }
+
+                    else {
+                        let nextFrame = Number(scores[index + 1]);
+                        nextFrame += Number(scores[index + 2]);
+                        
+                        currentFrame.score += Number(nextFrame);
+                    } 
                 }
-                
-
-                console.log(frames[currentFrameIndex+1].score);
+                //console.log(frames[currentFrameIndex+1].score);
                 currentFrameIndex++;
-            }
-
             }
         });
 
